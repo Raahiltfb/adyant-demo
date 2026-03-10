@@ -1,4 +1,4 @@
-
+Here's main.js
 
 /* =========================================================
    ADYANT™ — MAIN JAVASCRIPT
@@ -569,3 +569,4 @@ if ('loading' in HTMLImageElement.prototype) {
 console.log('%c ADYANT™ ', 'background: linear-gradient(135deg, #B8860B, #DAA520); color: #000; padding: 8px 20px; font-size: 18px; font-weight: bold; letter-spacing: 6px; border-radius: 4px;');
 console.log('%c Elegance, Distilled. ', 'color: #DAA520; font-size: 12px; letter-spacing: 4px; font-style: italic;');
 
+Make the changes and give me the full file to copy paste
