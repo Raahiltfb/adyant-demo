@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADYANT™ — Elegance, Distilled</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">ADYANT<sup>™</sup></div>
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
+      <div class="preloader-text">Crafting Elegance…</div>
+    </div>
+  </div>
+
+  <!-- CURSOR -->
+  <div id="cursor-outer"></div>
+  <div id="cursor-inner"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="#" class="nav-logo">
+          <svg class="logo-svg" viewBox="0 0 280 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ADYANT">
+            <text x="0" y="32" font-family="Inter, -apple-system, sans-serif" font-size="28" font-weight="200" letter-spacing="14" fill="rgba(255,255,255,0.92)">ADYANT</text>
+            <text x="252" y="18" font-family="Inter, sans-serif" font-size="11" font-weight="300" fill="rgba(255,255,255,0.6)">™</text>
+          </svg>
+        </a>
+      </div>
+      <div class="nav-center">
+        <a href="#collection" class="nav-link">Collection</a>
+        <a href="#craft" class="nav-link">The Craft</a>
+        <a href="#sustainability" class="nav-link">Sustainability</a>
+        <a href="#bespoke" class="nav-link">Bespoke</a>
+      </div>
+      <div class="nav-right">
+        <a href="#collection" class="nav-cta">Shop Now</a>
+        <button class="nav-menu-toggle" id="menuToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="#collection" class="mobile-nav-link">Collection</a>
+      <a href="#craft" class="mobile-nav-link">The Craft</a>
+      <a href="#sustainability" class="mobile-nav-link">Sustainability</a>
+      <a href="#bespoke" class="mobile-nav-link">Bespoke</a>
+      <a href="#collection" class="mobile-cta">Shop Now</a>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-section">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-bg-gradient"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal-up">THE FLAGSHIP SCENT</div>
+      <h1 class="hero-title">
+        <span class="hero-word reveal-up" style="--d:0.1s">Elegance,</span>
+        <span class="hero-word hero-word-italic reveal-up" style="--d:0.25s">Distilled.</span>
+      </h1>
+      <p class="hero-subtitle reveal-up" style="--d:0.4s">
+        HAPPIE by ADYANT™ — A Confident Femininity.<br/>
+        Nature's Finest, Hand-Crafted for the Extraordinary.
+      </p>
+      <div class="hero-actions reveal-up" style="--d:0.55s">
+        <a href="#scrollstory" class="btn-primary">Discover HAPPIE</a>
+        <a href="#collection" class="btn-secondary">View Collection</a>
+      </div>
+    </div>
+
+    <!-- PERFUME BOTTLE CANVAS -->
+    <div class="bottle-stage" id="bottleStage">
+      <div class="bottle-wrap" id="bottleWrap">
+        <!-- Cap -->
+        <div class="bottle-cap" id="bottleCap">
+          <div class="cap-body">
+            <div class="cap-shine"></div>
+            <div class="cap-logo">H</div>
+          </div>
+        </div>
+        <!-- Atomizer -->
+        <div class="bottle-atomizer" id="bottleAtomizer">
+          <div class="atomizer-collar"></div>
+          <div class="atomizer-nozzle"></div>
+        </div>
+        <!-- Glass Body -->
+        <div class="bottle-body" id="bottleBody">
+          <div class="bottle-glass">
+            <div class="glass-shine-1"></div>
+            <div class="glass-shine-2"></div>
+            <div class="liquid-fill" id="liquidFill">
+              <div class="liquid-shimmer"></div>
+            </div>
+            <div class="bottle-label">
+              <div class="label-brand">ADYANT™</div>
+              <div class="label-name">HAPPIE</div>
+              <div class="label-vol">Eau de Parfum · 50ml</div>
+            </div>
+          </div>
+          <div class="bottle-base"></div>
+        </div>
+        <!-- Floating notes -->
+        <div class="floating-note note-orange" id="noteOrange">
+          <div class="note-icon">✦</div>
+          <div class="note-label">Orange Blossom</div>
+        </div>
+        <div class="floating-note note-jasmine" id="noteJasmine">
+          <div class="note-icon">✿</div>
+          <div class="note-label">Jasmine</div>
+        </div>
+        <div class="floating-note note-cedar" id="noteCedar">
+          <div class="note-icon">❧</div>
+          <div class="note-label">Cedarwood</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- SCROLLYTELLING SECTION -->
+  <section id="scrollstory" class="scrollstory-section">
+    <div class="scrollstory-sticky">
+      <div class="story-canvas" id="storyCanvas">
+        <!-- Background atmosphere -->
+        <div class="story-atmosphere" id="storyAtmosphere"></div>
+
+        <!-- Story panels -->
+        <div class="story-panel" id="panel1">
+          <div class="panel-content panel-left">
+            <div class="note-number">01</div>
+            <div class="note-category">Top Notes</div>
+            <h2 class="panel-heading">A Burst of<br/><em>Orange Blossom</em></h2>
+            <p class="panel-body">The fragrance opens with an effervescent cascade of orange blossom, lifting the spirit with its sun-drenched, honeyed warmth.</p>
+          </div>
+        </div>
+
+        <div class="story-panel" id="panel2">
+          <div class="panel-content panel-right">
+            <div class="note-number">02</div>
+            <div class="note-category">Heart Notes</div>
+            <h2 class="panel-heading">The Heart of<br/><em>Jasmine</em></h2>
+            <p class="panel-body">At its core, an intoxicating jasmine absolute unfurls — floral, sensual, and deeply feminine. A confident whisper that lingers.</p>
+          </div>
+        </div>
+
+        <div class="story-panel" id="panel3">
+          <div class="panel-content panel-center">
+            <div class="note-number">03</div>
+            <div class="note-category">Base Notes</div>
+            <h2 class="panel-heading">Patchouli, Honey<br/>&amp; <em>Cedarwood</em></h2>
+            <p class="panel-body">Grounded by rich patchouli, golden honey, and the warm embrace of cedarwood — a lasting trail that defines presence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll trigger spacer -->
+    <div class="scrollstory-spacer"></div>
+  </section>
+
+  <!-- COLLECTION SECTION -->
+  <section id="collection" class="collection-section">
+    <div class="section-header">
+      <div class="section-eyebrow">The Collection</div>
+      <h2 class="section-title">Nature's Finest,<br/><em>Hand-Crafted</em></h2>
+      <p class="section-subtitle">Each fragrance a chapter. Each bottle, a work of art.</p>
+    </div>
+
+    <div class="collection-grid">
+
+      <!-- HAPPIE — Featured -->
+      <div class="fragrance-card card-featured" data-fragrance="happie">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-bottle-visual">
+            <div class="mini-bottle featured-bottle">
+              <div class="mini-cap"></div>
+              <div class="mini-body">
+                <div class="mini-liquid" style="--lc: #DAA520"></div>
+                <div class="mini-label">HAPPIE</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-tag">Flagship · Best Seller</div>
+            <h3 class="card-name">HAPPIE</h3>
+            <p class="card-desc">Orange Blossom · Jasmine · Cedarwood</p>
+            <div class="card-notes">
+              <span class="note-chip">🌸 Floral</span>
+              <span class="note-chip">🍊 Citrus</span>
+              <span class="note-chip">🌿 Woody</span>
+            </div>
+            <div class="card-variants">
+              <button class="variant-btn active" data-size="50ml" data-price="₹2,499">50ml · ₹2,499</button>
+              <button class="variant-btn" data-size="100ml" data-price="₹4,299">100ml · ₹4,299</button>
+            </div>
+            <div class="card-price-display">₹2,499</div>
+            <div class="card-actions">
+              <button class="btn-buy" onclick="addToCart('HAPPIE')">Add to Cart</button>
+              <button class="btn-wishlist" aria-label="Wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDEN GARDEN -->
+      <div class="fragrance-card" data-fragrance="eden">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-bottle-visual">
+            <div class="mini-bottle">
+              <div class="mini-cap" style="--cc:#2d5a27"></div>
+              <div class="mini-body">
+                <div class="mini-liquid" style="--lc: #4a7c59"></div>
+                <div class="mini-label">EDEN</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-tag">Botanical · Fresh</div>
+            <h3 class="card-name">Eden Garden</h3>
+            <p class="card-desc">Green Tea · Lotus · White Musk</p>
+            <div class="card-notes">
+              <span class="note-chip">🌿 Fresh</span>
+              <span class="note-chip">🌺 Floral</span>
+              <span class="note-chip">☁️ Musky</span>
+            </div>
+            <div class="card-variants">
+              <button class="variant-btn active" data-size="50ml" data-price="₹2,299">50ml · ₹2,299</button>
+              <button class="variant-btn" data-size="100ml" data-price="₹3,999">100ml · ₹3,999</button>
+            </div>
+            <div class="card-price-display">₹2,299</div>
+            <div class="card-actions">
+              <button class="btn-buy" onclick="addToCart('Eden Garden')">Add to Cart</button>
+              <button class="btn-wishlist" aria-label="Wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOST WANTED BY NIGHT -->
+      <div class="fragrance-card" data-fragrance="night">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-bottle-visual">
+            <div class="mini-bottle">
+              <div class="mini-cap" style="--cc:#1a1a2e"></div>
+              <div class="mini-body">
+                <div class="mini-liquid" style="--lc: #6a0572"></div>
+                <div class="mini-label">NIGHT</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-tag">Azzaro Inspired · Nocturnal</div>
+            <h3 class="card-name">Most Wanted<br/>by Night</h3>
+            <p class="card-desc">Black Pepper · Cardamom · Amber</p>
+            <div class="card-notes">
+              <span class="note-chip">🖤 Spicy</span>
+              <span class="note-chip">🌙 Amber</span>
+              <span class="note-chip">🔥 Woody</span>
+            </div>
+            <div class="card-variants">
+              <button class="variant-btn active" data-size="50ml" data-price="₹2,799">50ml · ₹2,799</button>
+              <button class="variant-btn" data-size="100ml" data-price="₹4,799">100ml · ₹4,799</button>
+            </div>
+            <div class="card-price-display">₹2,799</div>
+            <div class="card-actions">
+              <button class="btn-buy" onclick="addToCart('Most Wanted by Night')">Add to Cart</button>
+              <button class="btn-wishlist" aria-label="Wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOMBAY DREAMS -->
+      <div class="fragrance-card" data-fragrance="bombay">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-bottle-visual">
+            <div class="mini-bottle">
+              <div class="mini-cap" style="--cc:#c8602a"></div>
+              <div class="mini-body">
+                <div class="mini-liquid" style="--lc: #e8833a"></div>
+                <div class="mini-label">BOMBAY</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-tag">Oriental · Opulent</div>
+            <h3 class="card-name">Bombay Dreams</h3>
+            <p class="card-desc">Saffron · Rose · Sandalwood</p>
+            <div class="card-notes">
+              <span class="note-chip">🌹 Rose</span>
+              <span class="note-chip">✨ Saffron</span>
+              <span class="note-chip">🪵 Sandalwood</span>
+            </div>
+            <div class="card-variants">
+              <button class="variant-btn active" data-size="50ml" data-price="₹2,999">50ml · ₹2,999</button>
+              <button class="variant-btn" data-size="100ml" data-price="₹5,199">100ml · ₹5,199</button>
+            </div>
+            <div class="card-price-display">₹2,999</div>
+            <div class="card-actions">
+              <button class="btn-buy" onclick="addToCart('Bombay Dreams')">Add to Cart</button>
+              <button class="btn-wishlist" aria-label="Wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VALOUR -->
+      <div class="fragrance-card" data-fragrance="valour">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-bottle-visual">
+            <div class="mini-bottle">
+              <div class="mini-cap" style="--cc:#8b1a1a"></div>
+              <div class="mini-body">
+                <div class="mini-liquid" style="--lc: #c41e3a"></div>
+                <div class="mini-label">VALOUR</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-tag">Masculine · Bold</div>
+            <h3 class="card-name">Valour</h3>
+            <p class="card-desc">Bergamot · Vetiver · Dark Oud</p>
+            <div class="card-notes">
+              <span class="note-chip">🌲 Oud</span>
+              <span class="note-chip">🍋 Citrus</span>
+              <span class="note-chip">💎 Vetiver</span>
+            </div>
+            <div class="card-variants">
+              <button class="variant-btn active" data-size="50ml" data-price="₹2,699">50ml · ₹2,699</button>
+              <button class="variant-btn" data-size="100ml" data-price="₹4,599">100ml · ₹4,599</button>
+            </div>
+            <div class="card-price-display">₹2,699</div>
+            <div class="card-actions">
+              <button class="btn-buy" onclick="addToCart('Valour')">Add to Cart</button>
+              <button class="btn-wishlist" aria-label="Wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROVOCATEUR -->
+      <div class="fragrance-card" data-fragrance="provocateur">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-bottle-visual">
+            <div class="mini-bottle">
+              <div class="mini-cap" style="--cc:#3d1a5c"></div>
+              <div class="mini-body">
+                <div class="mini-liquid" style="--lc: #7b2d8b"></div>
+                <div class="mini-label">PROVOCATEUR</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-tag">Daring · Sensual</div>
+            <h3 class="card-name">Provocateur</h3>
+            <p class="card-desc">Tuberose · Musk · Black Vanilla</p>
+            <div class="card-notes">
+              <span class="note-chip">🖤 Dark</span>
+              <span class="note-chip">🌸 Tuberose</span>
+              <span class="note-chip">🍯 Vanilla</span>
+            </div>
+            <div class="card-variants">
+              <button class="variant-btn active" data-size="50ml" data-price="₹2,899">50ml · ₹2,899</button>
+              <button class="variant-btn" data-size="100ml" data-price="₹4,999">100ml · ₹4,999</button>
+            </div>
+            <div class="card-price-display">₹2,899</div>
+            <div class="card-actions">
+              <button class="btn-buy" onclick="addToCart('Provocateur')">Add to Cart</button>
+              <button class="btn-wishlist" aria-label="Wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROYALE -->
+      <div class="fragrance-card" data-fragrance="royale">
+        <div class="card-glow"></div>
+        <div class="card-inner">
+          <div class="card-bottle-visual">
+            <div class="mini-bottle">
+              <div class="mini-cap" style="--cc:#8b7536"></div>
+              <div class="mini-body">
+                <div class="mini-liquid" style="--lc: #c9a84c"></div>
+                <div class="mini-label">ROYALE</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="card-tag">Regal · Timeless</div>
+            <h3 class="card-name">Royale</h3>
+            <p class="card-desc">Neroli · Iris · Ambergris</p>
+            <div class="card-notes">
+              <span class="note-chip">👑 Regal</span>
+              <span class="note-chip">🌼 Iris</span>
+              <span class="note-chip">🌊 Ambergris</span>
+            </div>
+            <div class="card-variants">
+              <button class="variant-btn active" data-size="50ml" data-price="₹3,299">50ml · ₹3,299</button>
+              <button class="variant-btn" data-size="100ml" data-price="₹5,699">100ml · ₹5,699</button>
+            </div>
+            <div class="card-price-display">₹3,299</div>
+            <div class="card-actions">
+              <button class="btn-buy" onclick="addToCart('Royale')">Add to Cart</button>
+              <button class="btn-wishlist" aria-label="Wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CRAFT SECTION -->
+  <section id="craft" class="craft-section">
+    <div class="craft-inner">
+      <div class="craft-text-col">
+        <div class="section-eyebrow">The Craft</div>
+        <h2 class="section-title">Born from<br/><em>Pure Devotion</em></h2>
+        <p class="craft-body">Every Adyant fragrance begins as a vision — an emotion, a memory, a feeling yet unnamed. Our master perfumers travel the world's finest gardens and forests, selecting only the rarest raw materials.</p>
+        <p class="craft-body">Each bottle is hand-assembled, hand-filled, and inspected with obsessive precision. What you hold is not simply a fragrance. It is the accumulated expertise of a thousand careful hours.</p>
+        <a href="#collection" class="btn-primary" style="margin-top:2rem;display:inline-block;">Explore the Process</a>
+      </div>
+      <div class="craft-visual-col">
+        <div class="craft-stats">
+          <div class="stat-item">
+            <div class="stat-number" data-count="7">0</div>
+            <div class="stat-label">Fragrances</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="100">0</div>
+            <div class="stat-label">% Natural Ingredients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="5000">0</div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="3">0</div>
+            <div class="stat-label">Years of Mastery</div>
+          </div>
+        </div>
+        <div class="craft-quote">
+          <blockquote>"A fragrance is not worn. It is inhabited."</blockquote>
+          <cite>— The Adyant Ethos</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUSTAINABILITY SECTION -->
+  <section id="sustainability" class="sustainability-section">
+    <div class="section-header">
+      <div class="section-eyebrow">Our Promise</div>
+      <h2 class="section-title">Beauty Without<br/><em>Compromise</em></h2>
+    </div>
+    <div class="trust-grid" id="trustGrid">
+      <div class="trust-card" data-delay="0">
+        <div class="trust-icon-wrap">
+          <div class="trust-icon">🤲</div>
+        </div>
+        <h3>Handmade<br/>with Love</h3>
+        <p>Every bottle is crafted by artisans who pour their soul into each creation.</p>
+      </div>
+      <div class="trust-card" data-delay="0.1">
+        <div class="trust-icon-wrap">
+          <div class="trust-icon">🐇</div>
+        </div>
+        <h3>Cruelty-Free<br/>Certified</h3>
+        <p>We never test on animals. Ever. Beauty must be kind.</p>
+      </div>
+      <div class="trust-card" data-delay="0.2">
+        <div class="trust-icon-wrap">
+          <div class="trust-icon">🌱</div>
+        </div>
+        <h3>100%<br/>Vegan</h3>
+        <p>No animal-derived ingredients. Pure botanical luxury, inside and out.</p>
+      </div>
+      <div class="trust-card" data-delay="0.3">
+        <div class="trust-icon-wrap">
+          <div class="trust-icon">✨</div>
+        </div>
+        <h3>Skin-Friendly<br/>Formula</h3>
+        <p>Dermatologically tested. Gentle on sensitive skin. Safe for daily luxury.</p>
+      </div>
+      <div class="trust-card" data-delay="0.4">
+        <div class="trust-icon-wrap">
+          <div class="trust-icon">♻️</div>
+        </div>
+        <h3>Sustainable<br/>Packaging</h3>
+        <p>FSC-certified boxes. Recyclable glass. Responsible from source to shelf.</p>
+      </div>
+      <div class="trust-card" data-delay="0.5">
+        <div class="trust-icon-wrap">
+          <div class="trust-icon">🌍</div>
+        </div>
+        <h3>Ethically<br/>Sourced</h3>
+        <p>Fair-trade partnerships with growers across India, France, and Morocco.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESPOKE / TESTIMONIALS -->
+  <section id="bespoke" class="bespoke-section">
+    <div class="section-header">
+      <div class="section-eyebrow">Bespoke Experience</div>
+      <h2 class="section-title">Worn by the<br/><em>Discerning Few</em></h2>
+    </div>
+    <div class="testimonials-track-wrap">
+      <div class="testimonials-track" id="testimonialsTrack">
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"HAPPIE is the most beautiful thing I've ever worn. It makes me feel invincible. Pure elegance in a bottle."</p>
+          <div class="t-author">— Priya S., Mumbai</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Bombay Dreams is an ode to the city I love. Warm, opulent, and impossibly sophisticated."</p>
+          <div class="t-author">— Ananya R., Delhi</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Royale is the scent I've been searching for my entire life. People stop me on the street to ask what I'm wearing."</p>
+          <div class="t-author">— Kavya M., Bangalore</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Provocateur lives up to every promise. Dark, daring, and deeply feminine. My signature scent."</p>
+          <div class="t-author">— Rhea T., Hyderabad</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Eden Garden is pure serenity. Wears like a second skin. I feel transformed every morning."</p>
+          <div class="t-author">— Aisha K., Chennai</div>
+        </div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"HAPPIE is the most beautiful thing I've ever worn. It makes me feel invincible. Pure elegance in a bottle."</p>
+          <div class="t-author">— Priya S., Mumbai</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Bombay Dreams is an ode to the city I love. Warm, opulent, and impossibly sophisticated."</p>
+          <div class="t-author">— Ananya R., Delhi</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Royale is the scent I've been searching for my entire life. People stop me on the street to ask what I'm wearing."</p>
+          <div class="t-author">— Kavya M., Bangalore</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE BAND -->
+  <div class="marquee-band">
+    <div class="marquee-inner">
+      <span>HAPPIE</span><span>✦</span>
+      <span>EDEN GARDEN</span><span>✦</span>
+      <span>MOST WANTED BY NIGHT</span><span>✦</span>
+      <span>BOMBAY DREAMS</span><span>✦</span>
+      <span>VALOUR</span><span>✦</span>
+      <span>PROVOCATEUR</span><span>✦</span>
+      <span>ROYALE</span><span>✦</span>
+      <span>HAPPIE</span><span>✦</span>
+      <span>EDEN GARDEN</span><span>✦</span>
+      <span>MOST WANTED BY NIGHT</span><span>✦</span>
+      <span>BOMBAY DREAMS</span><span>✦</span>
+      <span>VALOUR</span><span>✦</span>
+      <span>PROVOCATEUR</span><span>✦</span>
+      <span>ROYALE</span><span>✦</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">ADYANT<sup>™</sup></div>
+        <p class="footer-tagline">Elegance, Distilled.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/adyantfragrances/" class="social-link" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/61573571382126/about/" class="social-link" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/adyantfragrances/" class="social-link" aria-label="Twitter/X">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Collection</h4>
+          <a href="#">HAPPIE</a>
+          <a href="#">Eden Garden</a>
+          <a href="#">Most Wanted by Night</a>
+          <a href="#">Bombay Dreams</a>
+          <a href="#">Valour</a>
+          <a href="#">Provocateur</a>
+          <a href="#">Royale</a>
+        </div>
+        <div class="footer-col">
+          <h4>Brand</h4>
+          <a href="#">Our Story</a>
+          <a href="#">The Craft</a>
+          <a href="#">Sustainability</a>
+          <a href="#">Press</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Shipping Info</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Join the World of Adyant</h4>
+        <p>Be the first to discover new fragrances, exclusive offers, and the stories behind each scent.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Your email address" id="newsletterEmail" />
+          <button class="newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+        </div>
+        <div class="newsletter-success" id="newsletterSuccess">✦ Welcome to the Adyant world.</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ADYANT™. All rights reserved. Mockup for Adyant Fragrances.</p>
+      <p class="footer-legal">Cruelty-Free · Vegan · Hand-Crafted · Skin-Friendly</p>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/919869620719?text=Hello%20Adyant%2C%20I%27d%20like%20to%20know%20more%20about%20your%20fragrances."
+     class="floating-whatsapp" id="floatingWA" target="_blank" rel="noopener" aria-label="Contact via WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="wa-tooltip">Luxury Concierge</span>
+  </a>
+
+  <!-- CART TOAST -->
+  <div class="cart-toast" id="cartToast">
+    <div class="toast-icon">✦</div>
+    <div class="toast-text">
+      <strong id="toastProductName">HAPPIE</strong>
+      <span>Added to your collection</span>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
