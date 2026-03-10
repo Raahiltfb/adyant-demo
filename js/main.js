@@ -44,7 +44,7 @@ window.addEventListener('load', () => {
     cursorInner.style.transform = `translate(${mouseX - 3}px, ${mouseY - 3}px)`;
   });
 
-  // Smooth outer cursor
+  // Smooth outer cursor using linear interpolation
   function animateCursor() {
     outerX += (mouseX - outerX) * 0.15;
     outerY += (mouseY - outerY) * 0.15;
@@ -71,18 +71,22 @@ window.addEventListener('load', () => {
 
   if (!navbar) return;
 
-  let lastScroll = 0;
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    if (scrollY > 60) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 60) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-    lastScroll = scrollY;
   }, { passive: true });
 
-  // Mobile menu
+  // Mobile menu logic
   if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('open');
@@ -95,6 +99,7 @@ window.addEventListener('load', () => {
         spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
       }
     });
+
     mobileMenu.querySelectorAll('.mobile-nav-link, .mobile-cta').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.remove('open');
@@ -157,7 +162,6 @@ window.addEventListener('load', () => {
     }
   }
 
-  // Create particles
   for (let i = 0; i < 120; i++) {
     particles.push(new Particle());
   }
@@ -169,18 +173,14 @@ window.addEventListener('load', () => {
   }
   animate();
 
-  // Pause when not visible
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      cancelAnimationFrame(animFrame);
-    } else {
-      animate();
-    }
+    if (document.hidden) cancelAnimationFrame(animFrame);
+    else animate();
   });
 })();
 
 // =========================================================
-//  SCROLLYTELLING — Olfactory Journey (FIXED)
+//  SCROLLYTELLING — Olfactory Journey
 // =========================================================
 (function initScrollytelling() {
   const section = document.getElementById('scrollstory');
@@ -188,7 +188,6 @@ window.addEventListener('load', () => {
   const storyAtmosphere = document.getElementById('storyAtmosphere');
   if (!section || !panels.length) return;
 
-  // Create progress dots
   const storyCanvas = document.getElementById('storyCanvas');
   const dotsEl = document.createElement('div');
   dotsEl.className = 'story-progress';
@@ -200,7 +199,6 @@ window.addEventListener('load', () => {
   if (storyCanvas) storyCanvas.appendChild(dotsEl);
   const dots = dotsEl.querySelectorAll('.story-dot');
 
-  // Bottle disassembly elements
   const bottleCap = document.getElementById('bottleCap');
   const bottleAtomizer = document.getElementById('bottleAtomizer');
   const bottleBody = document.getElementById('bottleBody');
@@ -218,51 +216,36 @@ window.addEventListener('load', () => {
   function updateScrollStory() {
     const rect = section.getBoundingClientRect();
     
-    // Check if we are inside the scroll area
     if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
       const sectionHeight = section.offsetHeight - window.innerHeight;
       const progress = Math.abs(rect.top) / sectionHeight;
-      
-      // Panel calculation
       const panelIndex = Math.floor(progress * panels.length);
       const safeIndex = Math.max(0, Math.min(panelIndex, panels.length - 1));
 
       if (safeIndex !== currentPanel) {
         currentPanel = safeIndex;
-        panels.forEach((p, i) => {
-          p.classList.toggle('active', i === currentPanel);
-        });
-        dots.forEach((d, i) => {
-          d.classList.toggle('active', i === currentPanel);
-        });
-        // Update atmosphere background
+        panels.forEach((p, i) => p.classList.toggle('active', i === currentPanel));
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentPanel));
         if (storyAtmosphere && atmosphereColors[currentPanel]) {
           storyAtmosphere.style.background = atmosphereColors[currentPanel];
         }
       }
 
-      // Bottle disassembly logic
       if (bottleCap && bottleAtomizer && bottleBody) {
-        // We start disassembly quickly and clamp it at 1.0
         const disassembly = Math.min(1, progress * 1.5);
-
-        // Pieces drift apart vertically
         bottleCap.style.transform = `translateX(-50%) translateY(${-disassembly * 120}px) rotate(${disassembly * 10}deg)`;
         bottleAtomizer.style.transform = `translateX(-50%) translateY(${-disassembly * 45}px)`;
         bottleBody.style.transform = `translateX(-50%) translateY(${disassembly * 25}px)`;
 
-        // Liquid drains slightly as you go through the notes
         if (liquidFill) {
           const liquidHeight = 75 - (disassembly * 20);
           liquidFill.style.height = liquidHeight + '%';
         }
       }
     } else if (rect.top > 0) {
-        // Reset state if user scrolls back up
         if (currentPanel !== -1) {
             panels.forEach(p => p.classList.remove('active'));
             currentPanel = -1;
-            // Reset bottle
             if(bottleCap) bottleCap.style.transform = 'translateX(-50%) translateY(0)';
             if(bottleAtomizer) bottleAtomizer.style.transform = 'translateX(-50%) translateY(0)';
             if(bottleBody) bottleBody.style.transform = 'translateX(-50%) translateY(0)';
@@ -317,9 +300,11 @@ window.addEventListener('load', () => {
 })();
 
 // =========================================================
-//  INTERSECTION OBSERVER — Reveal Animations
+//  REVEAL ANIMATIONS (Intersection Observer)
 // =========================================================
 (function initRevealObserver() {
+  const revealOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -327,19 +312,21 @@ window.addEventListener('load', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  }, revealOptions);
 
-  // Trust cards
+  // Trust cards with delay
   document.querySelectorAll('.trust-card').forEach((el) => {
-    el.style.transitionDelay = el.getAttribute('data-delay') + 's';
+    const delay = el.getAttribute('data-delay') || 0;
+    el.style.transitionDelay = delay + 's';
     observer.observe(el);
   });
 
-  // Fragrance cards
+  // Fragrance card stagger
   document.querySelectorAll('.fragrance-card').forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(40px)';
     el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s cubic-bezier(0.34,1.56,0.64,1) ${i * 0.1}s`;
+    
     const cardObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -352,7 +339,7 @@ window.addEventListener('load', () => {
     cardObs.observe(el);
   });
 
-  // Section headers
+  // Headers
   document.querySelectorAll('.section-header').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
@@ -390,18 +377,16 @@ window.addEventListener('load', () => {
   statNums.forEach(el => counterObs.observe(el));
 
   function animateCount(el, target) {
-    let start = 0;
+    let startTime = null;
     const duration = 2000;
-    const startTime = performance.now();
 
     function update(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
       const ease = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(ease * target);
       el.textContent = current.toLocaleString('en-IN');
       if (progress < 1) requestAnimationFrame(update);
-      else el.textContent = target.toLocaleString('en-IN');
     }
     requestAnimationFrame(update);
   }
@@ -421,7 +406,7 @@ window.addEventListener('load', () => {
         btn.classList.add('active');
         if (priceDisplay) {
           priceDisplay.textContent = btn.getAttribute('data-price');
-          priceDisplay.style.transform = 'scale(1.2)';
+          priceDisplay.style.transform = 'scale(1.1)';
           priceDisplay.style.color = 'var(--gold)';
           setTimeout(() => {
             priceDisplay.style.transform = '';
@@ -457,7 +442,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // =========================================================
-//  PARALLAX — Subtle depth on scroll
+//  PARALLAX — Depth on scroll
 // =========================================================
 (function initParallax() {
   const heroContent = document.querySelector('.hero-content');
@@ -471,11 +456,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const scrollY = window.scrollY;
         if (heroContent) {
           heroContent.style.transform = `translateY(${scrollY * 0.2}px)`;
-          heroContent.style.opacity = Math.max(0, 1 - scrollY / 600) + '';
+          heroContent.style.opacity = Math.max(0, 1 - scrollY / 600);
         }
-        if (bottleStage && window.scrollY < 800) {
+        if (bottleStage && scrollY < 800) {
           bottleStage.style.transform = `translateY(calc(-50% + ${scrollY * 0.3}px))`;
-          bottleStage.style.opacity = Math.max(0, 1 - scrollY / 500) + '';
+          bottleStage.style.opacity = Math.max(0, 1 - scrollY / 500);
         }
         ticking = false;
       });
@@ -518,7 +503,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     background: linear-gradient(90deg, #B8860B, #DAA520, #F5C842);
     z-index: 9997;
     transition: width 0.1s linear;
-    box-shadow: 0 0 8px rgba(218,165,32,0.5);
+    box-shadow: 0 0 8px rgba(218,165,32,0.4);
     pointer-events: none;
   `;
   document.body.appendChild(progressBar);
@@ -539,10 +524,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
   let angle = 0;
   function animateGlow() {
-    angle += 0.5;
+    angle += 0.05;
+    const pulse = 30 + Math.sin(angle) * 15;
+    const opacity = 0.12 + Math.sin(angle * 0.7) * 0.06;
+    
     bottleGlass.style.boxShadow = `
       inset 0 0 60px rgba(218,165,32,0.08),
-      0 0 ${30 + Math.sin(angle * 0.03) * 15}px rgba(218,165,32,${0.12 + Math.sin(angle * 0.02) * 0.06}),
+      0 0 ${pulse}px rgba(218,165,32,${opacity}),
       0 20px 60px rgba(0,0,0,0.7),
       inset 1px 0 0 rgba(255,255,255,0.15),
       inset -1px 0 0 rgba(0,0,0,0.2)
