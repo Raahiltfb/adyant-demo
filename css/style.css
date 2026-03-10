@@ -409,14 +409,16 @@ body.cursor-hover #cursor-outer {
 /* ===== PERFUME BOTTLE ===== */
 .bottle-stage {
   position: absolute;
-  right: 8%;
+  right: 12%; /* Increased for better breathing room */
   top: 50%;
   transform: translateY(-50%);
   z-index: 5;
   width: 280px;
   height: 480px;
+  pointer-events: none;
   perspective: 1200px;
 }
+
 .bottle-wrap {
   position: relative;
   width: 100%;
@@ -424,21 +426,44 @@ body.cursor-hover #cursor-outer {
   transform-style: preserve-3d;
   animation: bottleFloat 6s ease-in-out infinite;
 }
+
 @keyframes bottleFloat {
   0%, 100% { transform: translateY(0) rotateY(-5deg); }
   50% { transform: translateY(-18px) rotateY(5deg); }
 }
 
-.bottle-cap {
+/* Base Styles for Pieces */
+.bottle-cap, .bottle-atomizer, .bottle-body {
   position: absolute;
   left: 50%;
-  top: 0;
   transform: translateX(-50%);
+  /* Changed transition to 0.4s for snappier scroll response */
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Specific Placements */
+.bottle-cap {
+  top: 40px;
   width: 70px;
   height: 85px;
   z-index: 10;
-  transition: transform 1s var(--spring);
 }
+
+.bottle-atomizer {
+  top: 122px; /* Adjusted to sit right under the cap */
+  z-index: 9;
+}
+
+.bottle-body {
+  top: 150px; /* Adjusted to sit under the collar */
+  width: 140px;
+  z-index: 8;
+}
+
+/* Internal Components */
 .cap-body {
   width: 100%;
   height: 100%;
@@ -451,6 +476,7 @@ body.cursor-hover #cursor-outer {
     0 4px 20px rgba(0,0,0,0.6),
     0 0 30px rgba(218,165,32,0.2);
 }
+
 .cap-shine {
   position: absolute;
   top: 8px; left: 10px;
@@ -459,6 +485,7 @@ body.cursor-hover #cursor-outer {
   border-radius: 10px;
   transform: skewX(-10deg);
 }
+
 .cap-logo {
   position: absolute;
   bottom: 16px;
@@ -470,37 +497,19 @@ body.cursor-hover #cursor-outer {
   font-family: var(--font-serif);
 }
 
-.bottle-atomizer {
-  position: absolute;
-  left: 50%;
-  top: 82px;
-  transform: translateX(-50%);
-  z-index: 9;
-  display: flex; flex-direction: column; align-items: center;
-  transition: transform 1s var(--spring);
-}
 .atomizer-collar {
   width: 56px; height: 14px;
   background: linear-gradient(90deg, #9a7820 0%, #d4aa50 30%, #c8a84b 60%, #8b6914 100%);
   border-radius: 3px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
+
 .atomizer-nozzle {
   width: 6px; height: 18px;
   background: linear-gradient(90deg, #8b6914, #c8a84b);
   margin-top: -2px;
 }
 
-.bottle-body {
-  position: absolute;
-  left: 50%;
-  top: 108px;
-  transform: translateX(-50%);
-  width: 140px;
-  display: flex; flex-direction: column; align-items: center;
-  z-index: 8;
-  transition: transform 1s var(--spring);
-}
 .bottle-glass {
   width: 140px;
   height: 280px;
@@ -524,64 +533,20 @@ body.cursor-hover #cursor-outer {
     inset -1px 0 0 rgba(0,0,0,0.2);
 }
 
-@media (max-width: 992px) {
-  .bottle-stage {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    margin: 2rem auto;
-    height: 400px;
-  }
-  .hero-section {
-    height: auto;
-    flex-direction: column;
-    padding-top: 120px;
-  }
-}
-
-.glass-shine-1 {
-  position: absolute;
-  top: 0; left: 12px;
-  width: 18px; height: 100%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
-  border-radius: 10px;
-}
-.glass-shine-2 {
-  position: absolute;
-  top: 20px; right: 18px;
-  width: 8px; height: 60%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%);
-  border-radius: 10px;
-}
 .liquid-fill {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 75%;
   background: linear-gradient(180deg,
-    rgba(218,165,32,0.15) 0%,
-    rgba(184,134,11,0.35) 30%,
-    rgba(218,165,32,0.55) 70%,
-    rgba(245,200,66,0.7) 100%
+    rgba(218, 165, 32, 0.2) 0%,
+    rgba(184, 134, 11, 0.4) 30%,
+    rgba(218, 165, 32, 0.6) 70%,
+    rgba(245, 200, 66, 0.8) 100%
   );
-  transition: height 1s var(--transition);
+  transition: height 1s ease;
   overflow: hidden;
 }
-.liquid-shimmer {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255,255,255,0.05) 20%,
-    transparent 40%
-  );
-  animation: shimmerLiquid 3s linear infinite;
-}
-@keyframes shimmerLiquid {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(100%); }
-}
+
 .bottle-label {
   position: absolute;
   bottom: 30px; left: 50%; transform: translateX(-50%);
@@ -589,6 +554,7 @@ body.cursor-hover #cursor-outer {
   width: 110px;
   z-index: 5;
 }
+
 .label-brand {
   font-size: 0.55rem;
   letter-spacing: 0.3em;
@@ -596,6 +562,7 @@ body.cursor-hover #cursor-outer {
   color: rgba(218,165,32,0.8);
   font-weight: 500;
 }
+
 .label-name {
   font-size: 1.4rem;
   font-weight: 200;
@@ -603,17 +570,25 @@ body.cursor-hover #cursor-outer {
   color: rgba(255,255,255,0.9);
   font-family: var(--font-serif);
 }
-.label-vol {
-  font-size: 0.45rem;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.4);
-  margin-top: 4px;
-}
+
 .bottle-base {
   width: 160px; height: 14px;
   background: linear-gradient(90deg, #6a5010, #c8a84b, #8b6914);
   border-radius: 0 0 8px 8px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .bottle-stage {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 3rem auto;
+    height: 400px;
+    scale: 0.8; /* Scale down for mobile */
+  }
 }
 
 /* Floating Notes */
@@ -792,7 +767,7 @@ body.cursor-hover #cursor-outer {
   font-weight: 200;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
   color: var(--text-primary);
 }
 
