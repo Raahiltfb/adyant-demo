@@ -208,9 +208,9 @@ window.addEventListener('load', () => {
   const bottleWrap = document.getElementById('bottleWrap');
 
   const atmosphereColors = [
-    'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(255, 180, 50, 0.08) 0%, transparent 70%)',
-    'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(200, 230, 180, 0.06) 0%, transparent 70%)',
-    'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(100, 60, 20, 0.09) 0%, transparent 70%)',
+    'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(218, 165, 32, 0.12) 0%, transparent 70%)',
+    'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(139, 0, 0, 0.08) 0%, transparent 70%)',
+    'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(101, 67, 33, 0.15) 0%, transparent 70%)',
   ];
 
   let currentPanel = -1;
